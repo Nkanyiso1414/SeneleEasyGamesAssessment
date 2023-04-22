@@ -1,0 +1,130 @@
+﻿@page
+@model Senele.Solution.Web.Pages.Transactions.CreateTransactionModel
+
+@section Stylesheets
+    {
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+}
+<div class="main-wrapper">
+    <!--Body page---------------------------------------------------------------------->
+    <div class="page-wrapper">
+        <div class="content">
+
+            <section class="vh-100" style="background-color: #f8f8f6;">
+                <div class="container h-100">
+                    <div class="row d-flex justify-content-center align-items-center h-100">
+                      
+                        <div class="col-xl-9">
+                           <!--Alert-->
+                            @{
+                    if (ViewData["Error"] != null)
+                             {
+                             <div class="alert alert-danger">
+                             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong>Danger!</strong>  @ViewData["Error"]
+                             </div>
+                              }
+
+                          }
+                          <!--/Alert-->
+                            <div class="card-nav-tabs" style="width: 20rem;padding-top:10px;padding-bottom:10px">
+                                <div class="card-header card-header-danger">
+                                    <b>Client: </b>@Model.ObjectToDisplay.Name @Model.ObjectToDisplay.Surname
+                                </div>
+                            </div>
+                            <nav aria-label="breadcrumb" role="navigation">
+                              <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="~/Index">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/Clients">Clients</a></li>
+                                <li class="breadcrumb-item"><a href="/Transactions/Index?ClientId=@Model.ObjectToCreate.ClientID">Client Transactions</a></li>
+                                 <li class="breadcrumb-item active" aria-current="page">Create New Transaction</li>
+                             </ol>
+                          </nav>
+                            
+                            <div class="card" style="border-radius: 15px;">
+                               
+                                <div class="card-body">
+                                    <form method="post" asp-page="CreateTransaction">
+                                        <input asp-for="ObjectToCreate.ClientID" type="hidden" />
+                                        <input asp-for="ObjectToCreate.TransactionTypeID" type="hidden" />
+
+                                         <input asp-for="ObjectToDisplay.Name" type="hidden" />
+                                        <input asp-for="ObjectToDisplay.Surname" type="hidden" />
+                                        <input asp-for="ObjectToDisplay.ClientBalance" type="hidden" />
+                                        <input asp-for="ObjectToDisplay.ClientID" type="hidden" />
+                                     <div class="row align-items-center pt-4 pb-3">
+                                        <div class="col-md-3 ps-5">
+
+                                            <h6 class="mb-0">Transaction Type<span class="text-danger">*</span></h6>
+
+                                        </div>
+                                        <div class="col-md-9 pe-5">
+
+                                                <div id="typesToDisplay" class="form-control form-select js-choice border-0 z-index-9 bg-transparent"></div>
+                                            <span asp-validation-for="ObjectToCreate.TransactionTypeID" class="text-danger"></span>
+
+                                        </div>
+                                    </div>
+
+                                    <hr class="mx-n3">
+
+                                    <div class="row align-items-center pt-4 pb-3">
+                                        <div class="col-md-3 ps-5">
+
+                                            <h6 class="mb-0">Amount<span class="text-danger">*</span></h6>
+
+                                        </div>
+                                        <div class="col-md-9 pe-5">
+
+                                            <input class="form-control" asp-for="ObjectToCreate.Amount" type="text">
+                                            <span asp-validation-for="ObjectToCreate.Amount" class="text-danger"></span>
+
+                                        </div>
+                                    </div>
+
+                                    <hr class="mx-n3">
+
+                                    <div class="row align-items-center py-3">
+                                        <div class="col-md-3 ps-5">
+
+                                            <h6 class="mb-0">Comment</h6>
+
+                                        </div>
+                                        <div class="col-md-9 pe-5">
+
+                                            <input class="form-control" asp-for="ObjectToCreate.Comment" type="text">
+                                            
+
+                                        </div>
+                                    </div>
+
+                                    <hr class="mx-n3">
+
+                                    
+
+                                    <div class="px-5 py-4">
+                                        <button type="submit" class="btn btn-primary btn-lg">Create New</button>
+                                    </div>
+                                    </form>
+                                </div>
+                                
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="https://unpkg.com/axios@0.19.2/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.min.js"></script>
+    <script src="https://unpkg.com/vue-select@2.6.4/dist/vue-select.js"></script>
+    <script src="~/Scripts/DropDowns/PopulateTypesDropDown.js"></script>
+ 
+}

@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html lang="en">	
+	
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>@ViewData["Title"]  EasyGames</title>
+	<partial name="/Pages/Shared/_StyleSheet.cshtml" />
+	@await RenderSectionAsync("Styles", false)
+@await RenderSectionAsync("Stylesheets", false)
+</>
+<body class="">
+	<div class="wrapper">
+	@await Html.PartialAsync("_SideBarLayout")
+	@await Html.PartialAsync("_HeaderLayout")
+	@RenderBody()
+			
+	</div>
+	<partial name="/Pages/Shared/_Scripts.cshtml" />
+	@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

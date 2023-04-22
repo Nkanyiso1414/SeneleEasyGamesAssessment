@@ -1,0 +1,105 @@
+﻿@page
+@model Senele.Solution.Web.Pages.Clients.IndexModel
+
+@section Stylesheets
+    {
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+}
+<body>
+    <div class="main-wrapper">
+        <!--Body page---------------------------------------------------------------------->
+        <div class="page-wrapper">
+            <div class="content">
+                <div class="row">
+                    <div class="col-sm-5 col-5">
+                        <h4 class="page-title">Clients</h4>
+
+                    </div>
+                    <div class="col-sm-7 col-7 text-right m-b-30">
+                        <a href="/Clients/CreateClient" class="btn btn-primary btn-rounded"><i class="fa fa-plus"></i> Add Client</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search by client name..." title="Type in a name">
+                        </div>
+                    </div>
+                </div>
+                    <!--Alert-->
+            @{
+                    if (ViewData["Error"] != null)
+                {
+                      <div class="alert alert-danger">
+                          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong>Danger!</strong>  @ViewData["Error"]
+                    </div>
+                }
+
+            }
+            <!--/Alert-->
+                        <nav aria-label="breadcrumb" role="navigation">
+                              <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="~/Index">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Clients</li>
+                             </ol>
+                          </nav>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="myTable" class="table table-border table-striped custom-table datatable mb-0">
+                            <thead class="text-success">
+                                <tr>
+                                    <th>#</th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Balance(R)</th>
+                                    <th class="text-right">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (var item in Model.ObjectToList.Select((value, i) => new { i, value }))
+                                {
+
+                                    <!-- Table row -->
+                                    <tr>
+                                        @{
+                                            int Num = item.i + 1;
+                                        }
+                                        <td>@Num</td>
+                                        <td>@item.value.Name </td>
+                                        <td>@item.value.Surname </td>
+                                        <td>@item.value.ClientBalance </td>
+                                        <td class="text-right">
+                                            <a class='dropdown-item' href='/Clients/GetClientInfo?ClientId=@item.value.ClientID'><i class='fa fa-eye'></i> View</a>
+                                            <a class='dropdown-item' href='/Clients/UpdateClient?ClientId=@item.value.ClientID'><i class='glyphicon glyphicon-edit'></i> Update</a>
+                                            <a class='dropdown-item' href='/Transactions/Index?ClientId=@item.value.ClientID'><i class='fa fa-exchange'></i>Transaction</a>
+                                        </td>
+                                            
+                                      
+                                    </tr>
+                                    <!-- Table END -->
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+            </div>
+            <!---------------------------------------------------------------------------------->
+
+        </div>
+    </div>
+
+</body>
+@section scripts {
+    <script src="~/Scripts/PagingAndSearch/SearchByIndex.js"></script>
+    <script src="~/Scripts/AlertMessages/Alert.js"></script>
+}
+
+
+

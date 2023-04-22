@@ -1,0 +1,141 @@
+﻿@page
+@model Senele.Solution.Web.Pages.Transactions.UpdateTransactionModel
+@section Stylesheets
+    {
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+}
+<div class="main-wrapper">
+    <!--Body page---------------------------------------------------------------------->
+    <div class="page-wrapper">
+        <div class="content">
+
+            <section class="vh-100" style="background-color: #f8f8f6;">
+                <div class="container h-100">
+                    <div class="row d-flex justify-content-center align-items-center h-100">
+
+                        <div class="col-xl-9">
+                            <!--Alert-->
+                            @{
+                                if (ViewData["Error"] != null)
+                                {
+                                    <div class="alert alert-danger">
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        <strong>Danger!</strong>  @ViewData["Error"]
+                                    </div>
+                                }
+
+                            }
+                            <!--/Alert-->
+                                  <nav aria-label="breadcrumb" role="navigation">
+                              <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="~/Index">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/Clients">Clients</a></li>
+                                <li class="breadcrumb-item"><a href="/Transactions/Index?ClientId=@Model.ObjectToUpdate.ClientId">Client Transactions</a></li>
+                                 <li class="breadcrumb-item active" aria-current="page">Update Transaction</li>
+                             </ol>
+                          </nav>
+
+                            <div class="card" style="border-radius: 15px;">
+
+                                <div class="card-body">
+                                    <form method="post" asp-page="UpdateTransaction">
+                                        <input asp-for="ObjectToUpdate.TransactionID" type="hidden" />
+                                        <input asp-for="ObjectToUpdate.ClientId" type="hidden" />
+                                        <div class="row align-items-center pt-4 pb-3">
+                                            <div class="col-md-3 ps-5">
+
+                                                <h6 class="mb-0">First Name<span class="text-danger">*</span></h6>
+
+                                            </div>
+                                            <div class="col-md-9 pe-5">
+
+                                                <input class="form-control" asp-for="ObjectToUpdate.Name" readonly type="text">
+                                                
+
+                                            </div>
+                                        </div>
+
+                                        <hr class="mx-n3">
+
+                                        <div class="row align-items-center py-3">
+                                            <div class="col-md-3 ps-5">
+
+                                                <h6 class="mb-0">Last Name<span class="text-danger">*</span></h6>
+
+                                            </div>
+                                            <div class="col-md-9 pe-5">
+
+                                                <input class="form-control" asp-for="ObjectToUpdate.Surname" readonly type="text">
+                                                
+
+                                            </div>
+                                        </div>
+
+                                        <hr class="mx-n3">
+
+                                        <div class="row align-items-center py-3">
+                                            <div class="col-md-3 ps-5">
+
+                                                <h6 class="mb-0">Transaction Type<span class="text-danger">*</span></h6>
+
+                                            </div>
+                                            <div class="col-md-9 pe-5">
+
+                                                <input class="form-control" asp-for="ObjectToUpdate.TransactionTypeName" readonly type="text">
+
+
+                                            </div>
+                                        </div>
+
+                                        <hr class="mx-n3">
+                                        <div class="row align-items-center py-3">
+                                            <div class="col-md-3 ps-5">
+
+                                                <h6 class="mb-0">Amount<span class="text-danger">*</span></h6>
+
+                                            </div>
+                                            <div class="col-md-9 pe-5">
+
+                                                <input class="form-control" asp-for="ObjectToUpdate.Amount" readonly type="text">
+
+
+                                            </div>
+                                        </div>
+
+                                        <hr class="mx-n3">
+
+                                        <div class="row align-items-center py-3">
+                                            <div class="col-md-3 ps-5">
+
+                                                <h6 class="mb-0">Comment</h6>
+
+                                            </div>
+                                            <div class="col-md-9 pe-5">
+
+                                                <input class="form-control" asp-for="ObjectToUpdate.Comment" type="text">
+                                                
+
+                                            </div>
+                                        </div>
+
+                                        <hr class="mx-n3">
+
+
+                                        <div class="px-5 py-4">
+                                            <button type="submit" class="btn btn-primary btn-lg">Update Transaction</button>
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>

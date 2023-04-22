@@ -1,0 +1,81 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Senele.Solution.Web</RootNamespace>
+    <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+    <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+    <MvcRazorExcludeRefAssembliesFromPublish>false</MvcRazorExcludeRefAssembliesFromPublish>
+    <PreserveCompilationReferences>true</PreserveCompilationReferences>
+    <UserSecretsId>Senele.Solution-4681b4fd-151f-4221-84a4-929d86723e4c</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Logs\**" />
+    <Content Remove="Logs\**" />
+    <EmbeddedResource Remove="Logs\**" />
+    <None Remove="Logs\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Pages\Index.cshtml" />
+    <None Include="Pages\Shared\_HeaderLayout.cshtml" />
+    <None Include="Pages\Shared\_Layout.cshtml" />
+    <None Include="Pages\Shared\_Scripts.cshtml" />
+    <None Include="Pages\Shared\_SideBarLayout.cshtml" />
+    <None Include="Pages\Shared\_StyleSheet.cshtml" />
+    <None Include="Pages\_ViewImports.cshtml" />
+    <None Include="Pages\_ViewStart.cshtml" />
+    <None Include="wwwroot\assets\css\js\app.js" />
+    <None Include="wwwroot\assets\fonts\fontawesome-webfont3e6e.svg" />
+    <None Include="wwwroot\assets\js\app.js" />
+    <None Include="wwwroot\assets\js\bootstrap-datetimepicker.min.js" />
+    <None Include="wwwroot\assets\js\bootstrap.min.js" />
+    <None Include="wwwroot\assets\js\Chart.bundle.js" />
+    <None Include="wwwroot\assets\js\chart.js" />
+    <None Include="wwwroot\assets\js\dataTables.bootstrap4.min.js" />
+    <None Include="wwwroot\assets\js\fullcalendar.min.js" />
+    <None Include="wwwroot\assets\js\jquery-3.2.1.min.js" />
+    <None Include="wwwroot\assets\js\jquery.dataTables.min.js" />
+    <None Include="wwwroot\assets\js\jquery.fullcalendar.js" />
+    <None Include="wwwroot\assets\js\jquery.slimscroll.js" />
+    <None Include="wwwroot\assets\js\moment.min.js" />
+    <None Include="wwwroot\assets\js\popper.min.js" />
+    <None Include="wwwroot\assets\js\select2.min.js" />
+    <None Include="wwwroot\assets\js\tagsinput.js" />
+    <None Include="wwwroot\assets\plugins\light-gallery\fonts\lgd641.svg" />
+    <None Include="wwwroot\assets\plugins\light-gallery\js\lightgallery-all.min.js" />
+    <None Include="wwwroot\assets\plugins\summernote\dist\summernote-bs4.min.js" />
+    <None Include="wwwroot\Scripts\AlertMessages\Alert.js" />
+    <None Include="wwwroot\Scripts\PagingAndSearch\SearchByIndex.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Build.Framework" Version="17.5.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="5.0.0" />
+    <PackageReference Include="Serilog.Sinks.Async" Version="1.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+	<PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic" Version="7.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Senele.Solution.Application\Senele.Solution.Application.csproj" />
+    <ProjectReference Include="..\Senele.Solution.HttpApi\Senele.Solution.HttpApi.csproj" />
+    <ProjectReference Include="..\Senele.Solution.EntityFrameworkCore\Senele.Solution.EntityFrameworkCore.csproj" />
+    <PackageReference Include="Volo.Abp.Autofac" Version="7.1.0" />
+    <PackageReference Include="Volo.Abp.Swashbuckle" Version="7.1.0" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Serilog" Version="7.1.0" />
+    <PackageReference Include="Volo.Abp.Identity.Web" Version="7.1.0" />
+    <PackageReference Include="Volo.Abp.Account.Web.OpenIddict" Version="7.1.0" />
+    <PackageReference Include="Volo.Abp.TenantManagement.Web" Version="7.1.0" />
+    <PackageReference Include="Volo.Abp.SettingManagement.Web" Version="7.1.0" />
+  </ItemGroup>
+
+</Project>

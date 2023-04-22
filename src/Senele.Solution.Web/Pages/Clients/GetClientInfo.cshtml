@@ -1,0 +1,74 @@
+﻿@page
+@model Senele.Solution.Web.Pages.Clients.GetClientInfoModel
+@section Stylesheets
+    {
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+}
+<!-- Details page-->
+<body>
+    <div class="main-wrapper">
+        <!--Body page---------------------------------------------------------------------->
+        <div class="page-wrapper">
+            <div class="content">
+                
+                <h2 class="title ">Client Details</h2>
+                             <!--Alert-->
+                @{
+                    if (ViewData["Error"] != null)
+                    {
+                              <div class="alert alert-danger">
+                                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                    <strong>Danger!</strong>  @ViewData["Error"]
+                            </div>
+                    }
+
+                }
+            <!--/Alert-->
+   
+                <div class="row">
+
+                    <div class="col-md-6 pull-left">
+                             <nav aria-label="breadcrumb" role="navigation">
+                              <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="~/Index">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/Clients">Clients</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Client Details</li>
+                             </ol>
+                          </nav>
+                        <table class="table">
+                            <tr>
+                                <th>First Name:</th>
+                                <td>
+                                    @Model.ObjectToDisplay.Name
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Last:</th>
+                                <td>
+                                    @Model.ObjectToDisplay.Surname
+                                </td>
+                            </tr>
+
+                           
+
+
+
+                        </table>
+                        <div class="px-5 py-4">
+                            <a href="/Clients/UpdateClient?ClientId=@Model.ObjectToDisplay.ClientID" class="btn btn-primary update-btn"> Update</a>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+        <!---------------------------------------------------------------------------------->
+
+    </div>
+
+</body>
